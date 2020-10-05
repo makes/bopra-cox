@@ -3,7 +3,7 @@ import numpy as np
 from datetime import timedelta
 
 # Loads NIRS data
-def LoadCSV(filename, amendments=None, discard_by_status=True):
+def LoadCSV(filename, discard_by_status=False):
     df = pd.read_csv(filename,
                      sep = ',',
                      skiprows = 5,
@@ -31,14 +31,14 @@ def LoadCSV(filename, amendments=None, discard_by_status=True):
     if discard_by_status == True:
         df['rSO2'] = np.where(df['Bad_rSO2_auto'] == 1, np.nan, df['rSO2'])
 
-    if amendments is not None:
-        amend_df = pd.read_csv(amendments,
-                               sep = ';',
-                               na_values = ['--'],
-                               parse_dates = ['Time'])
+    #if amendments is not None:
+    #    amend_df = pd.read_csv(amendments,
+    #                           sep = ';',
+    #                           na_values = ['--'],
+    #                           parse_dates = ['Time'])
 
-        amend_df = amend_df.replace({'Mark': ' '}, '0')
-        df['Mark'] = amend_df['Mark'].array
-        df['Bad_rSO2_manual'] = amend_df['HuonoSignaali2'].array
+    #    amend_df = amend_df.replace({'Mark': ' '}, '0')
+    #    df['Mark'] = amend_df['Mark'].array
+    #    df['Bad_rSO2_manual'] = amend_df['HuonoSignaali2'].array
 
     return df

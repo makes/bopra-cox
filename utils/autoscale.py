@@ -2,6 +2,7 @@
 # https://gist.github.com/thomasaarholt/c8440b132aaea9f71f0588af486ad457
 
 import numpy as np
+import matplotlib as mpl
 
 def autoscale(ax=None, axis='y', margin=0.1):
     '''Autoscales the x or y axis of a given matplotlib ax object
@@ -39,7 +40,12 @@ def calculate_new_limit(fixed, dependent, limit):
     a fixed axis with limits
     '''
     if len(fixed) > 2:
-        mask = (fixed>limit[0]) & (fixed < limit[1])
+        # make it work with a timestamp x-axis
+        if(type(fixed[0]) is np.datetime64):
+            limit = (np.datetime64(mpl.dates.num2date(limit[0])),
+                     np.datetime64(mpl.dates.num2date(limit[1])))
+
+        mask = (fixed > limit[0]) & (fixed < limit[1])
         window = dependent[mask]
         low, high = np.nanmin(window), np.nanmax(window)
     else:

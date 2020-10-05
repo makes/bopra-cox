@@ -5,10 +5,11 @@ import os
 import glob
 from shutil import copyfile
 
-ANALYSIS_STEP = "1"
-ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_inspect_zoll_waveforms"
+ANALYSIS_STEP = "4"
+ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_plot_map_rso2"
 
-CASE_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+# discarding cases 4, 11 and 12 as they did not contain IBP data
+CASE_IDS = [1, 2, 3, 5, 6, 7, 8, 9, 10]
 TEMPLATE_NOTEBOOK = ANALYSIS_STEP_NAME + '.ipynb'
 
 OUTPUT_DIR = './reports/'

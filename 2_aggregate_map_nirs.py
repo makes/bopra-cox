@@ -12,7 +12,7 @@ ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_aggregate_map_nirs"
 CASE_IDS = [1, 2, 3, 5, 6, 7, 8, 9, 10]
 TEMPLATE_NOTEBOOK = ANALYSIS_STEP_NAME + '.ipynb'
 
-OUTPUT_DIR = './output/'
+OUTPUT_DIR = './reports/'
 PUBLISH_DIR = 'Z:/public_html/bopra/reports/' + ANALYSIS_STEP_NAME
 
 def run_notebook(case_ids, template_notebook):
