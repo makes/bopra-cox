@@ -6,7 +6,7 @@ import glob
 from shutil import copyfile
 
 ANALYSIS_STEP = "1"
-ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_inspect_zoll_waveforms"
+ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_waveform_identification"
 
 CASE_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 TEMPLATE_NOTEBOOK = ANALYSIS_STEP_NAME + '.ipynb'

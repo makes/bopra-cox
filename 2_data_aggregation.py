@@ -5,8 +5,8 @@ import os
 import glob
 from shutil import copyfile
 
-ANALYSIS_STEP = "3"
-ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_manual_data_cleansing"
+ANALYSIS_STEP = "2"
+ANALYSIS_STEP_NAME = ANALYSIS_STEP + "_data_aggregation"
 
 # discarding cases 4, 11 and 12 as they did not contain IBP data
 CASE_IDS = [1, 2, 3, 5, 6, 7, 8, 9, 10]
