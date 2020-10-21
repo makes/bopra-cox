@@ -33,9 +33,13 @@ def LoadWaveform(json, channel=1, discard_by_status=True, hide_starttime=False):
     min_val = None
     max_val = None
     for wave_rec in wave_records:
-        if not starttime and wave_rec['Waveform'][channel]['WaveRec']['FrameSize'] != 0:
-            starttime = wave_rec['StdHdr']['DevDateTime']
-            currenttime = pd.to_datetime(starttime)
+        try:
+            if not starttime and wave_rec['Waveform'][channel]['WaveRec']['FrameSize'] != 0:
+                starttime = wave_rec['StdHdr']['DevDateTime']
+                currenttime = pd.to_datetime(starttime)
+        except IndexError:
+            print(f'No such channel: {str(channel)}')
+            return None, 0
         if not wavetype:
             wavetype = wave_rec['Waveform'][channel]['WaveRec']['WaveType']
         if not waveform_name:

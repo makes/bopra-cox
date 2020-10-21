@@ -1,5 +1,10 @@
-python 1_inspect_zoll_waveforms.py
-python 2_aggregate_map_nirs.py
-python 3_manual_data_cleansing.py
-python 4_plot_map_rso2.py
-python 5_time_synchronization.py
+python process.py 1
+python process.py 2
+python process.py 3
+python process.py 4
+python process.py 5
+python report_visuals.py 1
+python report_visuals.py 2
+python report_visuals.py 3
+python report_visuals.py 4
+python report_visuals.py 5
