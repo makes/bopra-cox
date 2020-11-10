@@ -17,7 +17,7 @@ The source code can be found at <https://github.com/makes/bopra>.
 
 ## 1: Waveform Identification <a name="step1"></a>
 
-The ZOLL monitor-defibrillator stores the physiological signals recorded under five channel ids (1 to 5). The purpose of this step is to identify the nature of each signal to ensure correct processing.
+The ZOLL monitor-defibrillator stores the physiological signals recorded under six channel ids (0 to 5). The purpose of this step is to identify the nature of each signal to ensure correct processing.
 
 Two visualizations were created for each channel. The first one shows the entire time span of the signal, and the second one shows a zoomed-in detail of ten seconds at the fifteen minute mark.
 
@@ -35,7 +35,11 @@ Signals identified for each case:
 
 ### ___Conclusion:___
 
-Cases 4, 11 and 12 did not contain the required IAP waveform, and thus will be excluded from further analysis. The remaining datasets all have IAP data available under channel 1. Sample rate of the IAP pulse waveform is 125 Hz.
+Cases 4, 11, 12, 14, 23, 27, 28, 32, 33, 34, 35, 36, 37, 38, 39, 40, 48, 50, 52 and 57 did not contain the required IAP waveform, and thus will be excluded from further analysis.
+
+Cases 22, 30, 31, 43, 44, 53 and 56 produce unresolved loading errors and will be excluded for the time being.
+
+Of the 58 datasets provided, 31 have IAP data available under channel 1. Sample rate of the IAP pulse waveform is 125 Hz.
 
 ## 2: Data Aggregation <a name="step2"></a>
 
@@ -51,21 +55,13 @@ Data from the two separate source devices can be converted to a common sample ra
 
 ### ___Data:___
 
-- Case 00001: [00001_2.csv](output/00001_2.csv)
-- Case 00002: [00002_2.csv](output/00002_2.csv)
-- Case 00003: [00003_2.csv](output/00003_2.csv)
-- Case 00005: [00005_2.csv](output/00005_2.csv)
-- Case 00006: [00006_2.csv](output/00006_2.csv)
-- Case 00007: [00007_2.csv](output/00007_2.csv)
-- Case 00008: [00008_2.csv](output/00008_2.csv)
-- Case 00009: [00009_2.csv](output/00009_2.csv)
-- Case 00010: [00010_2.csv](output/00010_2.csv)
-
 [View the visualizations](analysis.php?page=2_images)
 
 ### ___Conclusion:___
 
-A csv file useful for further analysis was produced.
+Case 26 had invalid NIRS data format and was excluded.
+
+CSV files useful for further analysis were produced.
 
 ## 3: Data Cleansing <a name="step3"></a>
 

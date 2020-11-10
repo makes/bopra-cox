@@ -7,11 +7,11 @@ import json
 
 import os
 
-def run_notebook(step, case_ids, outdir):
-    template_nb = str(step) + '.ipynb'
+def run_notebook(step, name, case_ids, outdir):
+    template_nb = str(step) + f'_{name}.ipynb'
     for case_id in case_ids:
-        name = str(case_id).zfill(5)
-        outfile = os.path.join(outdir, f"{step}_{name}.ipynb")
+        outname = str(case_id).zfill(5)
+        outfile = os.path.join(outdir, f"{step}_{outname}.ipynb")
         papermill.execute_notebook(
             template_nb,
             outfile,
@@ -46,7 +46,9 @@ def main():
 
     # get args and config
     step = args.step[0]
-    cases = json.loads(config['Step' + str(step)]['CaseIds'])
+    stepcfg = config['Step' + str(step)]
+    name = stepcfg['Name']
+    cases = json.loads(stepcfg['CaseIds'])
     if args.case is not None:
         cases = [args.case]
     reportdir = config['Global']['ReportDir']
@@ -57,7 +59,7 @@ def main():
     # process
     if not os.path.exists(outdir):
         os.makedirs(outdir)
-    run_notebook(step, cases, outdir)
+    run_notebook(step, name, cases, outdir)
 
 if __name__ == "__main__":
     main()
