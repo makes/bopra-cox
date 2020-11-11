@@ -105,7 +105,7 @@ __Caveat:__ _Lack of_ correlation between the signals indicates good autoregulat
 
 ### ___Interpretation:___
 
-Here is case 6 as an example of an auto-align attempt:
+Here is an example auto-align attempt:
 
 [View all visualizations](analysis.php?page=4_images)
 
@@ -148,7 +148,7 @@ Manual alignment was used, based on visual inspection of common patterns between
 
 ## 6. COx index over time <a name="step6"></a>
 
-[___TODO___]: For BOPRA objective _"To assess the association between time on cerebral blood flow autoregulation range (defined as COx < 0.3) and mortality, morbidity and quality of life."_
+For BOPRA objective _"To assess the association between time on cerebral blood flow autoregulation range (defined as COx < 0.3) and mortality, morbidity and quality of life."_
 
 This will possibly require patching data discontinuities (imputation) using interpolation or some other method.
 
@@ -167,7 +167,22 @@ This will possibly require patching data discontinuities (imputation) using inte
 
 ## 7. COx vs MAP <a name="step7"></a>
 
-[___TODO___]
+### ___Hypothesis:___
+
+Plotting COx over MAP, we should see a u-shaped curve, whose minimum represents optimal MAP target for autoregulation.
+
+### ___Interpretation:___
+
+[View all visualizations](analysis.php?page=7_images)
+
+![](images/7_00007_01.png)
+![](images/7_00005_01.png)
+
+[View all visualizations](analysis.php?page=7_images)
+
+### ___Conclusion:___
+
+Some figures display a u-shaped or descending curve. To get evidence, whether or not the results seen are indeed real, it should be investigated, if data quality has a positive association with an outcome like this.
 
 ## 8: Scatterplot smoothing <a name="step8"></a>
 
