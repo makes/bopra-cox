@@ -39,7 +39,7 @@ def main():
 
     # get args and config
     step = args.step[0]
-    stepname = config['Step' + str(step)]['Name']
+    steptitle = config['Step' + str(step)]['Title']
     cases = json.loads(config['Step' + str(step)]['CaseIds'])
     if args.case is not None:
         cases = [args.case]
@@ -51,7 +51,7 @@ def main():
     print(f'Generating visualization report for {step}, cases {cases}')
 
     # process
-    markdown = f'# {str(step)}: {stepname}\n\n'
+    markdown = f'# {str(step)}: {steptitle}\n\n'
     markdown += '[Back](analysis.php)\n\n'
     if not os.path.exists(mdpath):
         os.makedirs(mdpath)

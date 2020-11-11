@@ -10,10 +10,11 @@ The source code can be found at <https://github.com/makes/bopra>.
 1. [Waveform Identification](#step1)
 2. [Data Aggregation](#step2)
 3. [Data Cleansing](#step3)
-4. [MAP-rSO<sub>2</sub> Scatterplot](#step4)
-5. [Time Synchronization](#step5)
-6. [Scatterplot Smoothing](#step6)
-7. [COx Index Over Time](#step7)
+4. [Automatic Time Synchronization](#step4)
+5. [Manual Time Synchronization](#step5)
+6. [COx Index Over Time](#step6)
+7. [COx vs MAP](#step7)
+8. [Scatterplot Smoothing](#step8)
 
 ## 1: Waveform Identification <a name="step1"></a>
 
@@ -27,7 +28,7 @@ Two visualizations were created for each channel. The first one shows the entire
 
 Each signal can be assumed to occupy the same channel id predictably across all cases. The invasive arterial pressure waveform required for the analysis can be found in all twelve cases.
 
-### ___Data:___
+### ___Interpretation:___
 
 Signals identified for each case:
 
@@ -59,8 +60,6 @@ Data from the two separate source devices can be converted to a common sample ra
 
 ### ___Conclusion:___
 
-Case 26 had invalid NIRS data format and was excluded.
-
 CSV files useful for further analysis were produced.
 
 ## 3: Data Cleansing <a name="step3"></a>
@@ -75,48 +74,16 @@ A csv file containing the data from step 2, amended with markings described abov
 
 There will be artefacts in the blood pressure signal caused by movement and nursing procedures.
 
-### ___Data:___
+### ___Interpretation:___
 
 - Blood pressure data manually marked for exclusion is shaded red.
 - Blood pressure data automatically marked as low quality is shaded darker red/grey
 - rSO<sub>2</sub> data manually marked for exclusion is shaded purple.
 - rSO<sub>2</sub> data automatically marked as low quality is shaded blue.
 
-### Case 00001:
-
 ![](images/3_00001_01.png)
 
-### Case 00002:
-
-![](images/3_00002_01.png)
-
-### Case 00003:
-
-![](images/3_00003_01.png)
-
-### Case 00005:
-
-![](images/3_00005_01.png)
-
-### Case 00006:
-
-![](images/3_00006_01.png)
-
-### Case 00007:
-
-![](images/3_00007_01.png)
-
-### Case 00008:
-
-![](images/3_00008_01.png)
-
-### Case 00009:
-
-![](images/3_00009_01.png)
-
-### Case 00010:
-
-![](images/3_00010_01.png)
+[View all visualizations](analysis.php?page=3_images)
 
 ### ___Conclusion:___
 
@@ -126,61 +93,7 @@ There will be artefacts in the blood pressure signal caused by movement and nurs
 
 A csv file containing the data described above was generated.
 
-## 4: MAP-rSO<sub>2</sub> Scatterplot <a name="step4"></a>
-
-### ___Hypothesis:___
-
-### ___Data:___
-
-### Case 00001:
-
-![](images/4_00001_01.png)
-![](images/4_00001_02.png)
-
-### Case 00002:
-
-![](images/4_00002_01.png)
-![](images/4_00002_02.png)
-
-### Case 00003:
-
-![](images/4_00003_01.png)
-![](images/4_00003_02.png)
-
-### Case 00005:
-
-![](images/4_00005_01.png)
-![](images/4_00005_02.png)
-
-### Case 00006:
-
-![](images/4_00006_01.png)
-![](images/4_00006_02.png)
-
-### Case 00007:
-
-![](images/4_00007_01.png)
-![](images/4_00007_02.png)
-
-### Case 00008:
-
-![](images/4_00008_01.png)
-![](images/4_00008_02.png)
-
-### Case 00009:
-
-![](images/4_00009_01.png)
-![](images/4_00009_02.png)
-
-### Case 00010:
-
-![](images/4_00010_01.png)
-![](images/4_00010_02.png)
-
-### ___Conclusion:___
-
-
-## 5: Time Synchronization <a name="step5"></a>
+## 4: Automatic Time Synchronization <a name="step4"></a>
 
 It has been noted that the two monitoring devices used for data collection may have a clock discrepancy of several minutes. This is identified as a potential source of error, as the vasogenic phenomena under analysis cycle within 20 to 180 seconds ([_Steiner et al. 2008_](https://doi.org/10.1007/s12028-008-9140-5)).
 
@@ -190,110 +103,72 @@ Automatic synchronization using cross-correlation can be used to reliably align 
 
 __Caveat:__ _Lack of_ correlation between the signals indicates good autoregulation.
 
-### ___Data:___
+### ___Interpretation:___
 
-### Case 00001:
+Here is case 6 as an example of an auto-align attempt:
 
-![](images/5_00001_01.png)
-![](images/5_00001_02.png)
-![](images/5_00001_03.png)
-![](images/5_00001_04.png)
-![](images/5_00001_05.png)
-![](images/5_00001_06.png)
-![](images/5_00001_07.png)
+[View all visualizations](analysis.php?page=4_images)
 
-### Case 00002:
+![](images/4_00006_01.png)
+![](images/4_00006_02.png)
+![](images/4_00006_03.png)
+![](images/4_00006_04.png)
+Effect of alignment on the MAP-rSO<sub>2</sub> pattern.
 
-![](images/5_00002_01.png)
-![](images/5_00002_02.png)
-![](images/5_00002_03.png)
-![](images/5_00002_04.png)
-![](images/5_00002_05.png)
-![](images/5_00002_06.png)
-![](images/5_00002_07.png)
+[View all visualizations](analysis.php?page=4_images)
 
-### Case 00003:
+### ___Conclusion:___
 
-![](images/5_00003_01.png)
-![](images/5_00003_02.png)
-![](images/5_00003_03.png)
-![](images/5_00003_04.png)
-![](images/5_00003_05.png)
-![](images/5_00003_06.png)
-![](images/5_00003_07.png)
+Cross correlation produced sensible results in only part of the cases. The method is not suitable for this analysis.
 
-### Case 00005:
+## 5: Manual Time Synchronization <a name="step5"></a>
 
-![](images/5_00005_01.png)
-![](images/5_00005_02.png)
-![](images/5_00005_03.png)
-![](images/5_00005_04.png)
-![](images/5_00005_05.png)
-![](images/5_00005_06.png)
-![](images/5_00005_07.png)
+As the automatic cross-correlation method proved unreliable for aligning this type of data, time synchronization is done manually, by visual inspection.
 
-### Case 00006:
+### ___Hypothesis:___
+
+Manual synchronization using visual inspection can be used to reliably align the signals.
+
+### ___Interpretation:___
+
+[View all visualizations](analysis.php?page=5_images)
 
 ![](images/5_00006_01.png)
 ![](images/5_00006_02.png)
 ![](images/5_00006_03.png)
-![](images/5_00006_04.png)
-![](images/5_00006_05.png)
-![](images/5_00006_06.png)
-![](images/5_00006_07.png)
+Effect of alignment on the MAP-rSO<sub>2</sub> pattern.
 
-### Case 00007:
-
-![](images/5_00007_01.png)
-![](images/5_00007_02.png)
-![](images/5_00007_03.png)
-![](images/5_00007_04.png)
-![](images/5_00007_05.png)
-![](images/5_00007_06.png)
-![](images/5_00007_07.png)
-
-### Case 00008:
-
-![](images/5_00008_01.png)
-![](images/5_00008_02.png)
-![](images/5_00008_03.png)
-![](images/5_00008_04.png)
-![](images/5_00008_05.png)
-![](images/5_00008_06.png)
-![](images/5_00008_07.png)
-
-### Case 00009:
-
-![](images/5_00009_01.png)
-![](images/5_00009_02.png)
-![](images/5_00009_03.png)
-![](images/5_00009_04.png)
-![](images/5_00009_05.png)
-![](images/5_00009_06.png)
-![](images/5_00009_07.png)
-
-### Case 00010:
-
-![](images/5_00010_01.png)
-![](images/5_00010_02.png)
-![](images/5_00010_03.png)
-![](images/5_00010_04.png)
-![](images/5_00010_05.png)
-![](images/5_00010_06.png)
-![](images/5_00010_07.png)
+[View all visualizations](analysis.php?page=5_images)
 
 ### ___Conclusion:___
 
+Manual alignment was used, based on visual inspection of common patterns between the signals. Part of the cases show no clearly identified point of alignment.
+
 ![](scatterplot_quality_small.jpg)
 
-Cross correlation produced sensible results in only part of the cases. Manual alignment was used, based on visual inspection of common patterns between the signals. Part of the cases show no clearly identified point of alignment.
-
-## 6: Scatterplot smoothing <a name="step6"></a>
-
-[___TODO___]: Using a [local regression](https://en.wikipedia.org/wiki/Local_regression) method like the lowess smoother in [Seaborn](https://seaborn.pydata.org/tutorial/regression.html)?
-
-## 7. COx index over time <a name="step7"></a>
+## 6. COx index over time <a name="step6"></a>
 
 [___TODO___]: For BOPRA objective _"To assess the association between time on cerebral blood flow autoregulation range (defined as COx < 0.3) and mortality, morbidity and quality of life."_
 
 This will possibly require patching data discontinuities (imputation) using interpolation or some other method.
+
+### ___Hypothesis:___
+
+### ___Interpretation:___
+
+[View all visualizations](analysis.php?page=6_images)
+
+![](images/6_00003_01.png)
+![](images/6_00003_02.png)
+
+[View all visualizations](analysis.php?page=6_images)
+
+### ___Conclusion:___
+
+## 7. COx vs MAP <a name="step7"></a>
+
+[___TODO___]
+
+## 8: Scatterplot smoothing <a name="step8"></a>
+
+[___TODO___]: Using a [local regression](https://en.wikipedia.org/wiki/Local_regression) method like the lowess smoother in [Seaborn](https://seaborn.pydata.org/tutorial/regression.html)?
