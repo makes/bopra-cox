@@ -38,9 +38,11 @@ Signals identified for each case:
 
 Cases 4, 11, 12, 14, 23, 27, 28, 32, 33, 34, 35, 36, 37, 38, 39, 40, 48, 50, 52 and 57 did not contain the required IAP waveform, and thus will be excluded from further analysis.
 
-Cases 22, 30, 31, 43, 44, 53 and 56 produce unresolved loading errors and will be excluded for the time being.
+Case 31 produces an unresolved loading error and will be excluded for the time being.
 
-Of the 58 datasets provided, 31 have IAP data available under channel 1. Sample rate of the IAP pulse waveform is 125 Hz.
+Cases 22, 30, 43, 44, 53 and 56 fail this step due to a software bug, but contain IAP data.
+
+Of the 58 datasets provided, 37 have IAP data available under channel 1. Sample rate of the IAP pulse waveform is 125 Hz.
 
 ## 2: Data Aggregation <a name="step2"></a>
 
@@ -70,6 +72,15 @@ Invalid values in rSO<sub>2</sub> data have already been marked by the researche
 
 A csv file containing the data from step 2, amended with markings described above, will be generated.
 
+_MAP datapoint exclusion criteria_:
+
+Any MAP values not already marked as invalid by the monitoring device, where one or more of the following apply:
+
+- Fluctuations at the start of IAP monitoring
+- Sudden MAP surge above 180 mmHg AND immediate return to baseline recorded before the spike
+- Sudden MAP drop below 40 mmHg, as would happen during arterial line flushing
+- Periodically occurring MAP drop due to NIBP measurement
+
 ### ___Hypothesis:___
 
 There will be artefacts in the blood pressure signal caused by movement and nursing procedures.
@@ -86,6 +97,8 @@ There will be artefacts in the blood pressure signal caused by movement and nurs
 [View all visualizations](analysis.php?page=3_images)
 
 ### ___Conclusion:___
+
+Case 24 was excluded from further analysis, as the rSO<sub>2</sub> signal was missing most of the time. Case 47 was excluded from further analysis, as no IAP data was recorded.
 
 - Any abnormally high or abnormally low MAP readings were marked for exclusion.
 - Periodically occurring drops in blood pressure were identified as a NIBP cuff restricting blood flow to the limb used for invasive blood pressure measurement. These values were marked for exclusion.
