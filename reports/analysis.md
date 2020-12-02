@@ -1,11 +1,17 @@
 
 # Assessing autoregulation using cerebral oximetry in a prehospital setting
 
-The purpose of this analysis is to find out if a pattern of the Lassen autoregulation curve can be found in measurement data recorded in a prehospital environment.
+This project is an attempt to examine cerebral autoregulation using data recorded in a prehospital environment.
 
-The two physiological signals used in this analysis are invasive blood pressure recorded using a ZOLL monitor-defibrillator, and left frontal lobe rSO<sub>2</sub> recorded using a Nonin H500 NIRS monitoring device. Data collection was done as a part of the [BOPRA study](https://boprastudy.fi).
+The two physiological signals used in this analysis are invasive blood pressure recorded using a ZOLL monitor-defibrillator, and left frontal lobe rSO<sub>2</sub> recorded each second using a Nonin H500 NIRS monitoring device. Data collection was done as a part of the [BOPRA study](https://boprastudy.fi) by Finnish HEMS physicians during patient transport under anaesthesia.
 
-The source code can be found at <https://github.com/makes/bopra>.
+rSO<sub>2</sub>-MAP plots will be rendered to see if a pattern of the Lassen autoregulation curve emerges in measurement data recorded in a prehospital environment. The value of COx index will be plotted over time, and the time spent above the threshold COx > 0.3 will be noted to assess association with mortality, morbidity and quality of life. Also, COx-MAP plots will be rendered to see if a U-shaped curve emerges, revealing a supposed individualized optimal MAP for cerebral perfusion. With sufficient pressure variation, it should be possible to detect LLA/ULA at some degree of reliability.
+
+Expected challenges are the relatively short duration of patient contact resulting in a scarce number of data points, as well as the mobile recording environment with plenty of interference.
+
+The author of this analysis has no knowledge of the underlying pathologies or other patient metadata. This information exists in the BOPRA database and can be associated with each patient case for further research.
+
+The purpose of this document is to facilitate the assessment of methodological validity. __For interpretation, please see this__ [summary page](summary.php) __of key visualizations for each case.__ To assess the technical validity of this analysis, please refer to the source code at <https://github.com/makes/bopra>.
 
 1. [Waveform Identification](#step1)
 2. [Data Aggregation](#step2)
@@ -106,7 +112,7 @@ Case 24 was excluded from further analysis, as the rSO<sub>2</sub> signal was mi
 
 A csv file containing the data described above was generated.
 
-## 4: Automatic Time Synchronization <a name="step4"></a>
+## 4: Automatic Synchronization <a name="step4"></a>
 
 It has been noted that the two monitoring devices used for data collection may have a clock discrepancy of several minutes. This is identified as a potential source of error, as the vasogenic phenomena under analysis cycle within 20 to 180 seconds ([_Steiner et al. 2008_](https://doi.org/10.1007/s12028-008-9140-5)).
 
@@ -134,7 +140,7 @@ Effect of alignment on the MAP-rSO<sub>2</sub> pattern.
 
 Cross correlation produced sensible results in only part of the cases. The method is not suitable for this analysis.
 
-## 5: Manual Time Synchronization <a name="step5"></a>
+## 5: Manual Synchronization <a name="step5"></a>
 
 As the automatic cross-correlation method proved unreliable for aligning this type of data, time synchronization is done manually, by visual inspection.
 
@@ -155,15 +161,15 @@ Effect of alignment on the MAP-rSO<sub>2</sub> pattern.
 
 ### ___Conclusion:___
 
-Manual alignment was used, based on visual inspection of common patterns between the signals. Part of the cases show no clearly identified point of alignment.
+Manual alignment was used, based on visual inspection of common patterns between the signals. Part of the cases show no clearly identifiable point of alignment.
 
-![](scatterplot_quality_small.jpg)
+<!-- ![](scatterplot_quality_small.jpg) -->
 
 ## 6. COx index over time <a name="step6"></a>
 
 For BOPRA objective _"To assess the association between time on cerebral blood flow autoregulation range (defined as COx < 0.3) and mortality, morbidity and quality of life."_
 
-This will possibly require patching data discontinuities (imputation) using interpolation or some other method.
+Data discontinuities will be imputed using linear interpolation.
 
 ### ___Hypothesis:___
 
@@ -188,14 +194,14 @@ Plotting COx over MAP, we should see a u-shaped curve, whose minimum represents 
 
 [View all visualizations](analysis.php?page=7_images)
 
-![](images/7_00007_01.png)
-![](images/7_00005_01.png)
+![](images/7_00007_02.png)
+![](images/7_00005_02.png)
 
 [View all visualizations](analysis.php?page=7_images)
 
 ### ___Conclusion:___
 
-Some figures display a u-shaped or descending curve. To get evidence, whether or not the results seen are indeed real, it should be investigated, if data quality has a positive association with an outcome like this.
+Some figures display a u-shaped or descending curve. Expert physician interpretation is required to assess if the results are indeed real.
 
 ## 8: Scatterplot smoothing <a name="step8"></a>
 
