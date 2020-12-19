@@ -1,5 +1,85 @@
 # Data analysis pipeline - Cerebral oximetry
 
+Intro
+
+1. [Requirements](#requirements)
+2. [Setup](#setup)
+3. [Usage](#usage)
+3. [Project Files](#project-files)
+4. [Output CSV Format](#output-csv-format)
+
+## Requirements
+
+[Miniconda or anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html) installation.
+
+## Setup
+
+Clone the repository to your computer:
+
+    git clone https://github.com/makes/bopra.git
+    cd bopra
+
+To install the required sofware packages, run the following command that creates a conda environment.
+
+    conda env create --name bopra-cox --file environment.yml
+
+or, to store the environment under project folder, you can use
+
+    conda env create --prefix ./env --file environment.yml
+
+Activate the installed environment using
+
+    conda activate bopra-cox
+
+or, if you installed the environment under project folder,
+
+    conda activate ./env
+
+## Usage
+
+Copy the raw data files into the `data` folder. NIRS files must be named `nirs[case id].csv`. ZOLL files must be named `zoll[case id].json`.
+
+The `amend` folder must contain the files `[case id]_a1.csv`, `[case id]_a2.csv` and `timeshift.csv`. `*_a1.csv` are comma delimited files containing column `Bad_MAP_manual` to exclude invalid MAP readings. `*_a2.csv` are semicolon separated files containing column `HuonoSignaali2` to exclude invalid NIRS readings.
+
+    ├─data
+    │     nirs00001.csv
+    │     zoll00001.json
+    │     nirs00002.csv
+    │     zoll00002.json
+    |     ...
+    ├─amend
+    │     timeshift.csv
+    │     00001_a1.csv
+    │     00001_a2.csv
+    │     00002_a1.csv
+    │     00002_a2.csv
+    |     ...
+
+To execute all steps for all the cases, use the script `runall.ps1`. To do partial runs, use the `process.py` script. Image assets are stored in the `reports/images` folder. The `report_visuals.py` script gathers the image assets to markdown files for easy viewing. The `reports` folder is a self contained website for easy publishing.
+
+## Project files
+
+    │ *.ipynb
+    │ anonymize.py
+    │ config.ini
+    │ environment.yml
+    │ process.py
+    │ README.md
+    │ report_visuals.py
+    │ runall.ps1
+    ├───adhoc
+    ├───amend
+    ├───data
+    ├───doc
+    ├───output
+    ├───reports
+    │   ├───images
+    │   ├───markdown
+    │   └───notebooks
+    └───utils
+
+`environment.yml` specifies the `conda` environment, and what software packages to install. See section [setup](#setup) for instructions.
+
 `runall.ps1`: A script to execute the entire pipeline from start to finish. Can be run in Anaconda Powershell prompt.
 
 `*.ipynb`: The Jupyter notebooks for each analysis step. Used as papermill templates.
