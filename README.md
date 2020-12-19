@@ -1,6 +1,6 @@
-# Data analysis pipeline - Cerebral oximetry
+# Cerebral oximetry data analysis pipeline
 
-Intro
+Analysis and reporting framework to study the relationship between cerebral tissue oximetry (rSO<sub>2</sub>) and mean arterial pressure (MAP).
 
 1. [Requirements](#requirements)
 2. [Setup](#setup)
@@ -54,6 +54,8 @@ The `amend` folder must contain the files `[case id]_a1.csv`, `[case id]_a2.csv`
     │     00002_a1.csv
     │     00002_a2.csv
     |     ...
+
+In `config.ini`, specify which `CaseIds` to process in each step. This allows for exclusion of datasets.
 
 To execute all steps for all the cases, use the script `runall.ps1`. To do partial runs, use the `process.py` script. Image assets are stored in the `reports/images` folder. The `report_visuals.py` script gathers the image assets to markdown files for easy viewing. The `reports` folder is a self contained website for easy publishing.
 
