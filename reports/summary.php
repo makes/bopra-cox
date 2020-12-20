@@ -15,7 +15,7 @@
     <?php
     include("Parsedown.php");
 
-    $page = "summary.md";
+    $page = "markdown/8_images.md";
     if (isset($_GET['page'])) $page = "markdown/" . $_GET['page'] . ".md";
 
     $Parsedown = new Parsedown();

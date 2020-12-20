@@ -10,3 +10,16 @@ img {
     height: auto;
     width: auto; /* for ie9 */
 }
+
+table, th, td {
+    border: 1px solid black;
+    font-size: 80%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}

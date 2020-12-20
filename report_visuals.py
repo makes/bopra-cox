@@ -8,7 +8,7 @@ import os
 def generate_markdown(imgpath, step, case_ids, imgdir):
     output = ''
     for case_id in case_ids:
-        md = f'## Case {str(case_id).zfill(5)}:\n\n'
+        md = f'## Case {str(case_id).zfill(5)}:<a name="case{case_id}"></a>\n\n'
         flt = f'{str(step)}_{str(case_id).zfill(5)}_*.png'
         flt = os.path.join(imgpath, flt)
         case_images = sorted(glob.glob(flt))
