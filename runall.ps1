@@ -1,5 +1,7 @@
 #!/usr/bin/env pwsh
 
+./fix_kernelspec.ps1
+
 #python process.py 1
 python process.py 2
 python process.py 3
