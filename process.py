@@ -21,7 +21,7 @@ def run_notebook(step, name, case_ids, outdir):
 
 def generate_html_report(notebook_file):
     _ = subprocess.run(
-        ["jupyter", "nbconvert", notebook_file, "--to=html"]
+        ["jupyter", "nbconvert", notebook_file, "--no-input", "--to=html"]
     )
 
 def main():
